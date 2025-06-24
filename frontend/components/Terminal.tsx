@@ -28,6 +28,7 @@ export default function Terminal() {
   const inputRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
   const outputRef = useRef<HTMLDivElement>(null)
+  const [apiKey, setApiKey] = useState<string>('')
 
   // Available commands
   const commands: Record<string, Command> = {
@@ -218,6 +219,7 @@ Choose your path wisely, Neo...
           setPendingCommand('set-api-key')
           return 'Please enter your OpenAI API key (input will be hidden):'
         }
+        setApiKey(args)
         // In a real app, you'd store this securely
         return 'API key set successfully. (Note: In production, use secure storage)'
       }
@@ -226,7 +228,7 @@ Choose your path wisely, Neo...
       name: 'connect',
       description: 'Connect to FastAPI backend',
       execute: async () => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL 
         try {
           const response = await fetch(`${apiUrl}/api/health`)
           if (response.ok) {
@@ -279,7 +281,7 @@ Ready for commands. Type 'help' for available options.
       name: 'health',
       description: 'Check backend health status',
       execute: async () => {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL 
         try {
           const response = await fetch(`${apiUrl}/api/health`)
           if (response.ok) {
@@ -315,7 +317,7 @@ Ready for commands. Type 'help' for available options.
           return 'Usage: chat [your message]'
         }
         
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL 
         try {
           const response = await fetch(`${apiUrl}/api/chat`, {
             method: 'POST',
@@ -325,17 +327,17 @@ Ready for commands. Type 'help' for available options.
             body: JSON.stringify({ 
               developer_message: "You are a helpful AI assistant in a Matrix-style terminal interface.",
               user_message: args,
-              api_key: "your-openai-api-key-here" // User needs to replace with their actual API key
+              api_key: apiKey
             }),
           })
           
           if (response.ok) {
-            const data = await response.json()
+            const text = await response.text()
             return `
 ╔══════════════════════════════════════════════════════════════╗
 ║                        AI RESPONSE                           ║
 ╠══════════════════════════════════════════════════════════════╣
-║  ${data.response.replace(/\n/g, '\n║  ')}                  ║
+║  ${text.replace(/\n/g, '\n║  ')}                            ║
 ╚══════════════════════════════════════════════════════════════╝
             `
           } else {

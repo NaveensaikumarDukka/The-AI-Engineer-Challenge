@@ -7,6 +7,13 @@
     }
   ],
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://the-ai-engineer-challenge-9mn3pmc99.vercel.app"
-  }
+    "NEXT_PUBLIC_API_URL": "https://the-ai-engineer-challenge-vert.vercel.app/"
+  },
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+    "rewrites": [
+      {
+        "source": "/api/:path*",                 
+        "destination": "https://the-ai-engineer-challenge-vert.vercel.app/:path*" 
+      }
+    ]
 } 
