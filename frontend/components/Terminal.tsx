@@ -29,6 +29,7 @@ export default function Terminal() {
   const passwordRef = useRef<HTMLInputElement>(null)
   const outputRef = useRef<HTMLDivElement>(null)
   const [apiKey, setApiKey] = useState<string>('')
+  const [model, setModel] = useState<string>('gpt-4-turbo')
 
   // Available commands
   const commands: Record<string, Command> = {
@@ -54,6 +55,7 @@ export default function Terminal() {
 ║  set-api-key    - Set OpenAI API key (secure)                ║
 ║  reboot         - Reboot the terminal                        ║
 ║  exit           - Exits the terminal                          ║
+║  model          - Set the AI model (e.g., gpt-4-turbo, gpt-3.5-turbo)║
 ╚══════════════════════════════════════════════════════════════╝
       `
     },
@@ -325,7 +327,7 @@ Ready for commands. Type 'help' for available options.
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ 
-              developer_message: "You are a helpful AI assistant in a Matrix-style terminal interface.",
+              developer_message: `You are a concise, knowledgeable, and friendly AI assistant operating in a Matrix-style terminal.\n- Always provide clear, actionable, and accurate answers.\n- Use markdown for code, lists, and tables.\n- If you don't know something, say so honestly.\n- Ask clarifying questions if the user's request is ambiguous.\n- Offer suggestions for next steps when appropriate.`,
               user_message: args,
               api_key: apiKey
             }),
@@ -384,6 +386,14 @@ Ready for commands. Type 'help' for available options.
 ║  ⚡ Shutting down...                                         ║
 ╚══════════════════════════════════════════════════════════════╝
         `
+      }
+    },
+    model: {
+      name: 'model',
+      description: 'Set the AI model (e.g., gpt-4-turbo, gpt-3.5-turbo)',
+      execute: (args: string) => {
+        setModel(args);
+        return `Model set to ${args}`;
       }
     }
   }
