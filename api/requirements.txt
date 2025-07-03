@@ -11,4 +11,3 @@ python-dotenv>=1.0.0
 numpy>=1.26.2
 setuptools>=68.0.0
 httpx>=0.25.0
--e ../  # Install aimakerspace in development mode

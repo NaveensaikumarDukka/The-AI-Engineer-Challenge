@@ -34,9 +34,7 @@ app.add_middleware(
 )
 
 # Create uploads directory if it doesn't exist
-UPLOAD_DIR = "uploads"
-if not os.path.exists(UPLOAD_DIR):
-    os.makedirs(UPLOAD_DIR)
+UPLOAD_DIR = "/tmp"
 
 # Global storage for document collections
 document_collections = {}
