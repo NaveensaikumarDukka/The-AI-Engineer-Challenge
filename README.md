@@ -4,15 +4,15 @@
 </p>
 
 
-## <h1 align="center" id="heading"> 👋 Welcome to the AI Engineer Challenge</h1>
+## <h1 align="center" id="heading"> 👋 Welcome to the Wealth Management Assistant</h1>
 
-## 🤖 Your First Vibe Coding LLM Application
+## 🤖 AI-Powered Document Analysis for Financial Advisors
 
 > If you are a novice, and need a bit more help to get your dev environment off the ground, check out this [Setup Guide](docs/GIT_SETUP.md). This guide will walk you through the 'git' setup you need to get started.
 
 > For additional context on LLM development environments and API key setup, you can also check out our [Interactive Dev Environment for LLM Development](https://github.com/AI-Maker-Space/Interactive-Dev-Environment-for-AI-Engineers).
 
-In this repository, we'll walk you through the steps to create a LLM (Large Language Model) powered application with a vibe-coded frontend!
+In this repository, we'll walk you through the steps to create a LLM (Large Language Model) powered wealth management application with document RAG capabilities for financial advisors!
 
 Are you ready? Let's get started!
 
@@ -171,14 +171,14 @@ Here's a template to get your post started!
 ```
 🚀🎉 Exciting News! 🎉🚀
 
-🏗️ Today, I'm thrilled to announce that I've successfully built and shipped my first-ever LLM using the powerful combination of , and the OpenAI API! 🖥️
+🏗️ Today, I'm thrilled to announce that I've successfully built and shipped my first-ever LLM using the powerful combination of , and the OpenAI API! 🖥️
 
 Check it out 👇
 [LINK TO APP]
 
 A big shoutout to the @AI Makerspace for all making this possible. Couldn't have done it without the incredible community there. 🤗🙏
 
-Looking forward to building with the community! 🙌✨ Here's to many more creations ahead! 🥂🎉
+Looking forward to building with the community! 🙌✨ Here's to many more creations ahead! 🥂🎉
 
 Who else is diving into the world of AI? Let's connect! 🌐💡
 

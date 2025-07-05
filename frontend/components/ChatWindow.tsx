@@ -12,22 +12,22 @@ type Props = {
 
 const roleStyles = {
   user: {
-    bg: "bg-blue-700 text-white",
+    bg: "bg-primary-light text-text-default",
     icon: "👤",
     align: "justify-end",
-    bubble: "rounded-br-2xl rounded-tl-2xl rounded-bl-md",
+    bubble: "rounded-br-2xl rounded-tl-2xl rounded-bl-md border border-primary-dark",
   },
   developer: {
-    bg: "bg-purple-700 text-white",
+    bg: "bg-accent-light text-text-default",
     icon: "💻",
     align: "justify-start",
-    bubble: "rounded-bl-2xl rounded-tr-2xl rounded-br-md",
+    bubble: "rounded-bl-2xl rounded-tr-2xl rounded-br-md border border-accent-dark",
   },
   assistant: {
-    bg: "bg-green-700 text-white",
+    bg: "bg-white text-text-default",
     icon: "🤖",
     align: "justify-start",
-    bubble: "rounded-bl-2xl rounded-tr-2xl rounded-br-md",
+    bubble: "rounded-bl-2xl rounded-tr-2xl rounded-br-md border border-gray-200",
   },
 };
 
@@ -35,10 +35,10 @@ export default function ChatWindow({ messages, chatWindowRef }: Props) {
   return (
     <div
       ref={chatWindowRef}
-      className="bg-gray-900 border border-gray-800 rounded-xl p-4 h-80 overflow-y-auto mb-2 shadow-inner"
+      className="bg-background-light border border-border rounded-xl p-4 h-80 overflow-y-auto mb-2 shadow-inner"
     >
       {messages.length === 0 ? (
-        <div className="text-gray-500 text-center">No messages yet.</div>
+        <div className="text-gray-400 text-center">No messages yet.</div>
       ) : (
         messages.map((msg, i) => {
           const style = roleStyles[msg.role];

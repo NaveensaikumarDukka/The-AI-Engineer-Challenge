@@ -1,40 +1,21 @@
-# Matrix Terminal Frontend
+# Wealth Management Assistant Frontend
 
-A Matrix-style terminal interface for The AI Engineer Challenge, built with Next.js and TypeScript.
+A modern web interface for The AI Engineer Challenge, built with Next.js and TypeScript, designed for financial advisors and wealth management professionals.
 
 ## Features
 
-- 🎨 **Matrix Rain Effect**: Animated background with falling Matrix characters
-- 💻 **Interactive Terminal**: Full command-line interface with history navigation
-- 🤖 **AI Integration**: Connect to FastAPI backend for AI chat functionality
-- 🎯 **Cyberpunk Aesthetic**: Authentic Matrix-style visual design
-- ⚡ **Real-time Updates**: Live system status and time display
-- 📱 **Responsive Design**: Works on desktop and mobile devices
-
-## Available Commands
-
-| Command | Description |
-|---------|-------------|
-| `help` | Shows available commands |
-| `clear` | Clears the terminal |
-| `about` | Shows information about the challenge |
-| `status` | Shows system status |
-| `matrix` | Displays Matrix-style information |
-| `echo [message]` | Echoes back your input |
-| `date` | Shows current date and time |
-| `ls` | Lists available files (simulated) |
-| `cat [filename]` | Reads file contents (simulated) |
-| `connect` | Connect to FastAPI backend |
-| `health` | Check backend health status |
-| `chat [message]` | Start AI chat session |
-| `reboot` | Reboot the terminal |
-| `exit` | Exits the terminal |
+- 💬 **AI-Powered Chat**: Interactive chat interface with OpenAI integration
+- 📄 **Document Upload**: Upload and process financial documents (PDF, TXT, CSV, Excel)
+- 🔍 **RAG Analysis**: Retrieve and analyze document content using vector search
+- 📊 **Document Collections**: Organize and manage uploaded financial documents
+- 🎨 **Modern UI**: Clean, professional interface optimized for financial workflows
+- 📱 **Responsive Design**: Works seamlessly on desktop and mobile devices
 
 ## Prerequisites
 
 - Node.js 18+ 
 - npm or yarn
-- FastAPI backend running (optional, for AI features)
+- FastAPI backend running (for AI features)
 
 ## Installation
 
@@ -61,14 +42,19 @@ npm run dev
 
 ```
 frontend/
-├── src/
-│   ├── app/
-│   │   ├── globals.css      # Global styles and Matrix theme
-│   │   ├── layout.tsx       # Root layout component
-│   │   └── page.tsx         # Main page component
-│   └── components/
-│       ├── MatrixRain.tsx   # Matrix rain animation
-│       └── Terminal.tsx     # Terminal interface
+├── app/
+│   ├── globals.css      # Global styles
+│   ├── layout.tsx       # Root layout component
+│   └── page.tsx         # Main page component
+├── components/
+│   ├── ChatInterface.tsx    # Main chat interface
+│   ├── ChatWindow.tsx       # Chat message display
+│   ├── ChatInput.tsx        # Message input component
+│   ├── FileUpload.tsx       # Document upload interface
+│   ├── DocumentCollections.tsx # Document management
+│   ├── ApiKeyInput.tsx      # OpenAI API key input
+│   ├── ModelSelector.tsx    # AI model selection
+│   └── PromptModeToggle.tsx # Developer/User mode toggle
 ├── package.json
 ├── tailwind.config.js       # Tailwind CSS configuration
 ├── tsconfig.json           # TypeScript configuration
@@ -77,24 +63,28 @@ frontend/
 
 ### Key Components
 
-#### MatrixRain.tsx
-- Canvas-based Matrix rain animation
-- Responsive to window resizing
-- Optimized performance with requestAnimationFrame
+#### ChatInterface.tsx
+- Main application interface with tab navigation
+- Integrates all components for seamless user experience
+- Handles API communication and state management
 
-#### Terminal.tsx
-- Command execution and history management
-- Real-time system status updates
-- Backend integration for AI features
-- Keyboard navigation (arrow keys for history)
+#### FileUpload.tsx
+- Drag-and-drop file upload interface
+- Supports multiple document formats
+- Real-time upload progress tracking
+
+#### DocumentCollections.tsx
+- Document collection management
+- RAG-enabled chat functionality
+- Collection deletion and organization
 
 ### Styling
 
-The application uses a custom Matrix theme with:
-- Green color scheme (#00ff00, #00cc00, #001100)
-- Courier Prime font for authentic terminal look
-- CSS animations for glow effects and transitions
-- Custom scrollbars matching the theme
+The application uses a clean, professional design with:
+- Modern color scheme optimized for readability
+- Responsive Tailwind CSS framework
+- Smooth animations and transitions
+- Professional typography and spacing
 
 ## Backend Integration
 
@@ -114,8 +104,6 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
-
-4. In the terminal, use the `connect` command to establish connection.
 
 ## Deployment
 
@@ -137,27 +125,20 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 
 ## Customization
 
-### Adding New Commands
+### Adding New Components
 
-To add a new command, modify the `commands` object in `Terminal.tsx`:
+To add new functionality, create components in the `components/` directory:
 
 ```typescript
-newCommand: {
-  name: 'newcommand',
-  description: 'Description of the new command',
-  execute: async (args: string) => {
-    // Command logic here
-    return 'Command output'
-  }
+// components/NewFeature.tsx
+export default function NewFeature() {
+  return (
+    <div className="p-4 bg-white rounded-lg shadow">
+      {/* Component content */}
+    </div>
+  )
 }
 ```
-
-### Modifying the Matrix Rain
-
-Adjust the Matrix rain effect in `MatrixRain.tsx`:
-- Change `fontSize` for different character sizes
-- Modify `matrixChars` for different characters
-- Adjust animation speed by changing the interval
 
 ### Theme Customization
 
@@ -175,33 +156,19 @@ Modify colors and styles in:
    - Check CORS settings in backend
    - Verify network connectivity
 
-2. **Matrix Rain Not Visible**
+2. **File Upload Issues**
+   - Check file format compatibility
+   - Verify API key is set correctly
+   - Ensure backend is running
+
+3. **Chat Not Working**
+   - Verify OpenAI API key is valid
    - Check browser console for errors
-   - Ensure canvas is supported
-   - Verify CSS is loading correctly
-
-3. **Commands Not Working**
-   - Check browser console for JavaScript errors
-   - Verify TypeScript compilation
    - Ensure all dependencies are installed
-
-### Performance Optimization
-
-- Matrix rain uses canvas for better performance
-- Terminal output is virtualized for large histories
-- Animations are optimized with CSS transforms
 
 ## Contributing
 
 1. Follow the existing code style
 2. Add TypeScript types for new features
-3. Test commands thoroughly
+3. Test functionality thoroughly
 4. Update documentation for new features
-
-## License
-
-This project is part of The AI Engineer Challenge.
-
----
-
-**Welcome to the Matrix, Neo...**

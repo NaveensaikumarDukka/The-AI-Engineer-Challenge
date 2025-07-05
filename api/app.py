@@ -22,7 +22,7 @@ from aimakerspace.vectordatabase import VectorDatabase
 from aimakerspace.openai_utils.embedding import EmbeddingModel
 
 # Initialize FastAPI application with a title
-app = FastAPI(title="Legal Document Analysis API")
+app = FastAPI(title="Wealth Management Assistant API")
 
 # Configure CORS (Cross-Origin Resource Sharing) middleware
 app.add_middleware(
@@ -192,16 +192,16 @@ async def rag_chat(request: RAGChatRequest):
             context = "\n\n".join(relevant_chunks)
             
             # Create system message with context
-            system_message = f"""You are a legal document analysis assistant. You have access to the following document context:
+            system_message = f"""You are a wealth management and financial advisory assistant. You have access to the following document context:
 
 {context}
 
-Please answer the user's question based on this context. If the information is not available in the context, say so clearly. Always provide accurate, helpful responses for legal professionals."""
+Please answer the user's question based on this context. If the information is not available in the context, say so clearly. Always provide accurate, helpful responses for financial advisors and wealth management professionals. Focus on investment strategies, portfolio analysis, risk management, and financial planning."""
             
             user_message = request.user_message
         else:
             # Regular chat without RAG
-            system_message = "You are a helpful legal assistant."
+            system_message = "You are a helpful wealth management and financial advisory assistant."
             user_message = request.user_message
         
         # Create streaming response

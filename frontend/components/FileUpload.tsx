@@ -104,19 +104,19 @@ export default function FileUpload({ apiKey, onUploadSuccess }: Props) {
   return (
     <div className="flex-1 flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-md">
-        <h2 className="text-xl font-semibold text-gray-200 mb-4 text-center">
-          Upload Legal Document
+        <h2 className="text-xl font-semibold text-text mb-4 text-center">
+          Upload Financial Document
         </h2>
         
         {/* Collection Name Input */}
         <div className="mb-4">
-          <label className="block text-sm text-gray-400 mb-2">Collection Name</label>
+          <label className="block text-sm text-text-muted mb-2">Collection Name</label>
           <input
             type="text"
             value={collectionName}
             onChange={(e) => setCollectionName(e.target.value)}
-            placeholder="Enter collection name (e.g., Contract Analysis)"
-            className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter collection name (e.g., Portfolio Analysis, Investment Reports)"
+            className="w-full px-3 py-2 bg-surface border border-border rounded-lg text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={uploading}
           />
         </div>
@@ -125,8 +125,8 @@ export default function FileUpload({ apiKey, onUploadSuccess }: Props) {
         <div
           className={`border-2 border-dashed rounded-lg p-6 text-center transition ${
             dragActive
-              ? "border-blue-400 bg-blue-900/20"
-              : "border-gray-600 hover:border-gray-500"
+              ? "border-primary bg-primary/20"
+              : "border-border hover:border-primary"
           }`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
@@ -145,30 +145,30 @@ export default function FileUpload({ apiKey, onUploadSuccess }: Props) {
           {!selectedFile ? (
             <div>
               <div className="text-4xl mb-4">📄</div>
-              <p className="text-gray-300 mb-2">
+              <p className="text-text mb-2">
                 Drag and drop your document here, or{" "}
                 <button
                   onClick={openFileDialog}
-                  className="text-blue-400 hover:text-blue-300 underline"
+                  className="text-accent hover:text-accent-light underline"
                   disabled={uploading}
                 >
                   browse files
                 </button>
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-text-muted">
                 Supported: {ALLOWED_FILE_TYPES.join(', ')}
               </p>
             </div>
           ) : (
             <div>
               <div className="text-4xl mb-4">✅</div>
-              <p className="text-gray-300 mb-2">Selected: {selectedFile.name}</p>
-              <p className="text-xs text-gray-500 mb-4">
+              <p className="text-text mb-2">Selected: {selectedFile.name}</p>
+              <p className="text-xs text-text-muted mb-4">
                 Size: {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
               </p>
               <button
                 onClick={() => setSelectedFile(null)}
-                className="text-red-400 hover:text-red-300 text-sm"
+                className="text-error hover:text-error-light text-sm"
                 disabled={uploading}
               >
                 Remove file
@@ -180,13 +180,13 @@ export default function FileUpload({ apiKey, onUploadSuccess }: Props) {
         {/* Upload Progress */}
         {uploading && (
           <div className="mt-4">
-            <div className="flex justify-between text-sm text-gray-400 mb-1">
+            <div className="flex justify-between text-sm text-text-muted mb-1">
               <span>Processing document...</span>
               <span>{uploadProgress}%</span>
             </div>
-            <div className="w-full bg-gray-700 rounded-full h-2">
+            <div className="w-full bg-surface-dark rounded-full h-2">
               <div
-                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                className="bg-primary h-2 rounded-full transition-all duration-300"
                 style={{ width: `${uploadProgress}%` }}
               ></div>
             </div>
@@ -198,9 +198,13 @@ export default function FileUpload({ apiKey, onUploadSuccess }: Props) {
           <button
             onClick={handleUpload}
             disabled={uploading || !apiKey || !collectionName.trim()}
-            className="w-full mt-4 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className={`w-full mt-4 px-4 py-2 rounded-lg font-medium transition ${
+              uploading || !apiKey || !collectionName.trim()
+                ? "bg-surface-dark text-text-muted cursor-not-allowed"
+                : "bg-primary hover:bg-primary-dark text-white"
+            }`}
           >
-            {uploading ? "Processing..." : "Upload & Index Document"}
+            {uploading ? "Uploading..." : "Upload Document"}
           </button>
         )}
 

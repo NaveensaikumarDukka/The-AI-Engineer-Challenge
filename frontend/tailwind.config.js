@@ -8,48 +8,62 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        matrix: {
-          green: '#00ff00',
-          'green-dark': '#00cc00',
-          'green-darker': '#009900',
-          'green-light': '#33ff33',
-          'green-glow': '#00ff00',
-          black: '#000000',
-          'dark-gray': '#001100',
-          'medium-gray': '#003300',
-          'light-gray': '#006600',
+        primary: {
+          light: '#a78bfa',
+          DEFAULT: '#8b5cf6',
+          dark: '#7c3aed',
         },
-      },
-      fontFamily: {
-        'matrix': ['Courier Prime', 'Courier', 'monospace'],
-        'terminal': ['Courier New', 'Courier', 'monospace'],
-      },
-      animation: {
-        'matrix-rain': 'matrix-rain 2s linear infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'fade-in': 'fade-in 0.5s ease-in-out',
-        'typewriter': 'typewriter 3s steps(40) 1s 1 normal both',
-      },
-      keyframes: {
-        'matrix-rain': {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100vh)' },
+        accent: {
+          light: '#60a5fa',
+          DEFAULT: '#3b82f6',
+          dark: '#2563eb',
         },
-        'glow': {
-          '0%': { textShadow: '0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00' },
-          '100%': { textShadow: '0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00' },
+        background: {
+          light: '#1e1b4b',
+          DEFAULT: '#0f172a',
+          dark: '#020617',
         },
-        'fade-in': {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        surface: {
+          light: '#1e293b',
+          DEFAULT: '#334155',
+          dark: '#475569',
         },
-        'typewriter': {
-          '0%': { width: '0' },
-          '100%': { width: '100%' },
+        border: {
+          DEFAULT: '#475569',
+          light: '#64748b',
         },
-      },
-      backgroundImage: {
-        'matrix-pattern': "url('data:image/svg+xml,%3Csvg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%2300ff00\" fill-opacity=\"0.1\"%3E%3Ccircle cx=\"10\" cy=\"10\" r=\"1\"/%3E%3C/g%3E%3C/svg%3E')",
+        text: {
+          DEFAULT: '#f8fafc',
+          muted: '#94a3b8',
+          dark: '#1e293b',
+        },
+        success: {
+          light: '#86efac',
+          DEFAULT: '#22c55e',
+          dark: '#16a34a',
+        },
+        warning: {
+          light: '#fde047',
+          DEFAULT: '#eab308',
+          dark: '#ca8a04',
+        },
+        error: {
+          light: '#fca5a5',
+          DEFAULT: '#ef4444',
+          dark: '#dc2626',
+        },
+        gray: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+        },
       },
     },
   },

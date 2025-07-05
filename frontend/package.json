@@ -1,7 +1,7 @@
 {
-  "name": "matrix-terminal-frontend",
+  "name": "wealth-management-frontend",
   "version": "0.1.0",
-  "description": "Matrix-like terminal frontend for The AI Engineer Challenge",
+  "description": "Wealth Management Assistant frontend for The AI Engineer Challenge",
   "private": true,
   "scripts": {
     "dev": "next dev",

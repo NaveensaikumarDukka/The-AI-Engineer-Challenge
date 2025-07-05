@@ -182,31 +182,31 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 py-8 px-2">
-      <div className="w-full max-w-4xl bg-gray-950 rounded-2xl shadow-2xl border border-gray-800 p-0 md:p-8 flex flex-col min-h-[800px]">
-        <header className="flex flex-col items-center gap-2 py-6 border-b border-gray-800 mb-4">
-          <h1 className="text-3xl font-extrabold tracking-tight text-blue-400 drop-shadow">Legal Document Analysis</h1>
-          <p className="text-gray-400 text-sm">AI-powered document analysis for legal professionals</p>
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background-light via-background to-background-dark py-8 px-2">
+      <div className="w-full max-w-4xl bg-surface rounded-2xl shadow-2xl border border-border p-0 md:p-8 flex flex-col min-h-[800px]">
+        <header className="flex flex-col items-center gap-2 py-6 border-b border-border mb-4">
+          <h1 className="text-3xl font-extrabold tracking-tight text-primary drop-shadow">Wealth Management Assistant</h1>
+          <p className="text-text-muted text-sm">AI-powered document analysis for financial advisors</p>
         </header>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-gray-800 mb-4">
+        <div className="flex border-b border-border mb-4">
           <button
             onClick={() => setActiveTab("chat")}
             className={`px-4 py-2 text-sm font-medium transition ${
               activeTab === "chat"
-                ? "text-blue-400 border-b-2 border-blue-400"
-                : "text-gray-400 hover:text-gray-300"
+                ? "text-primary border-b-2 border-primary"
+                : "text-text-muted hover:text-primary"
             }`}
           >
-            💬 Chat Analysis
+            💬 Financial Analysis
           </button>
           <button
             onClick={() => setActiveTab("documents")}
             className={`px-4 py-2 text-sm font-medium transition ${
               activeTab === "documents"
-                ? "text-blue-400 border-b-2 border-blue-400"
-                : "text-gray-400 hover:text-gray-300"
+                ? "text-primary border-b-2 border-primary"
+                : "text-text-muted hover:text-primary"
             }`}
           >
             📄 Upload Documents
@@ -215,8 +215,8 @@ export default function ChatInterface() {
             onClick={() => setActiveTab("collections")}
             className={`px-4 py-2 text-sm font-medium transition ${
               activeTab === "collections"
-                ? "text-blue-400 border-b-2 border-blue-400"
-                : "text-gray-400 hover:text-gray-300"
+                ? "text-primary border-b-2 border-primary"
+                : "text-text-muted hover:text-primary"
             }`}
           >
             📚 Document Collections
@@ -232,7 +232,7 @@ export default function ChatInterface() {
 
         {/* RAG Controls - Only show in chat tab */}
         {activeTab === "chat" && (
-          <div className="flex items-center gap-4 mb-4 px-2 p-3 bg-gray-800 rounded-lg">
+          <div className="flex items-center gap-4 mb-4 px-2 p-3 bg-surface-dark rounded-lg">
             <label className="flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
@@ -240,13 +240,13 @@ export default function ChatInterface() {
                 onChange={(e) => setUseRAG(e.target.checked)}
                 className="rounded"
               />
-              <span className="text-gray-300">Use Document Context (RAG)</span>
+              <span className="text-text">Use Document Context (RAG)</span>
             </label>
             {useRAG && (
               <select
                 value={selectedCollection}
                 onChange={(e) => setSelectedCollection(e.target.value)}
-                className="px-3 py-1 text-sm bg-gray-700 border border-gray-600 rounded text-gray-200"
+                className="px-3 py-1 text-sm bg-surface border border-border rounded text-text"
               >
                 <option value="">Select a document collection</option>
                 {collections.map((collection) => (
@@ -257,7 +257,7 @@ export default function ChatInterface() {
               </select>
             )}
             {selectedCollection && (
-              <span className="text-xs text-green-400">
+              <span className="text-xs text-success">
                 Using: {getSelectedCollectionName()}
               </span>
             )}
@@ -297,8 +297,8 @@ export default function ChatInterface() {
           )}
         </div>
 
-        <footer className="text-xs text-gray-600 text-center mt-6 py-2 border-t border-gray-800">
-          &copy; {new Date().getFullYear()} Legal Document Analysis &mdash; <span className="text-blue-400">The AI Engineer Challenge</span>
+        <footer className="text-xs text-text-muted text-center mt-6 py-2 border-t border-border">
+          &copy; {new Date().getFullYear()} Wealth Management Assistant &mdash; <span className="text-accent">The AI Engineer Challenge</span>
         </footer>
       </div>
     </div>
